@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/favorites.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _TabsScreenState extends State<TabsScreen> {
     {
       'page': FavoritesScreen(),
       'title': 'Your Favorite',
-      // If you want to use action button, then use below.
+      // If you want to use action button also, then use below.
       // 'actions':[FlatButton(onPressed: null, child: null)]
     },
   ];
@@ -43,6 +44,7 @@ class _TabsScreenState extends State<TabsScreen> {
           _pages[_selectedPageIndex]['title'],
         ),
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
@@ -50,7 +52,8 @@ class _TabsScreenState extends State<TabsScreen> {
         unselectedItemColor: Colors.white,
         selectedItemColor: Theme.of(context).accentColor,
         currentIndex:
-            _selectedPageIndex, //to adjust color(selected color or another) when after onTab tabed.
+            //to adjust color(selected color or another) when after onTab tabed.
+            _selectedPageIndex,
         // type: BottomNavigationBarType.shifting,
         items: [
           BottomNavigationBarItem(
